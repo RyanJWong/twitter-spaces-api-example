@@ -1,0 +1,1 @@
+A NodeJS app which pulls all spaces from the requested user id then displays data such as the status of the space as well as any speakers and their bios.
