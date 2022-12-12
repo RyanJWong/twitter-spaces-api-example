@@ -39,7 +39,7 @@ async function main(id) {
         ]
     });
     const data = response.data;
-    data.forEach(function (dat) {
+    data?.forEach(function (dat) {
         console.log("Space:", dat.title, "status:", dat.state);
         const speakers = dat.speaker_ids;
         console.log("Speakers:")
