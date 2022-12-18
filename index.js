@@ -3,41 +3,8 @@ const { Client } = require("twitter-api-sdk");
 
 async function main(id) {
     const client = new Client(process.env.BEARER_TOKEN);
-
-    const response = await client.spaces.findSpacesByCreatorIds({
-        "user_ids": [
-            id
-        ],
-        "space.fields": [
-            "created_at",
-            "creator_id",
-            "ended_at",
-            "host_ids",
-            "id",
-            "invited_user_ids",
-            "is_ticketed",
-            "lang",
-            "participant_count",
-            "scheduled_start",
-            "speaker_ids",
-            "started_at",
-            "state",
-            "subscriber_count",
-            "title",
-            "topic_ids",
-            "updated_at"
-        ],
-        "expansions": [
-            "creator_id",
-            "host_ids",
-            "speaker_ids"
-        ],
-        "topic.fields": [
-            "description",
-            "id",
-            "name"
-        ]
-    });
+    let response = await fetch(`https://twitter-spaces-api.dylanwong007.workers.dev/?id=${id}`);
+    response = await response.json();
     const data = response.data;
     data?.forEach(function (dat) {
         console.log("Space:", dat.title, "status:", dat.state);
